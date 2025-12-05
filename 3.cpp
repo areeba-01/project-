@@ -3,86 +3,213 @@
 using namespace std;
 
 // -------------------------
-// Initialize all A–Z signs
+// Initialize all Aâ€“Z signs
 // -------------------------
 void initializeSigns() {
-    addSign('a', "Closed fist with thumb on side", 
-        "\n    __\n   |__|_\n");
+     addSign('A', "Closed fist with thumb on side", 
+        "\n       _____ "
+        "\n      |     |"
+        "\n    ->|  A  |"
+        "\n      |_____|"
+        "\n       \\_____/"
+    );
     
-    addSign('b', "Flat hand, fingers up, thumb across palm",
-        "\n   |\n   |_\n   |_|\n   ");
+    addSign('B', "Flat hand, fingers up, thumb across palm", 
+        "\n      | | | |"
+        "\n      | | | |"
+        "\n      | | | |"
+        "\n     _|_|_|_|"
+        "\n    |___B____|"
+    );
     
-    addSign('c', "Curved hand like letter C",
-        "\n    ___\n   /   \n   \\___\n");
+    addSign('C', "Curved hand like letter C", 
+        "\n       _____"
+        "\n      /     "
+        "\n     |   C  "
+        "\n     |      "
+        "\n      \\_____"
+    );
     
-    addSign('d', "Index finger up, other fingers touch thumb",
-        "\n     |\n    _|\n   |_|\n    ");
+    addSign('D', "Index finger up, rest touch thumb", 
+        "\n         |"
+        "\n         |"
+        "\n        _|_"
+        "\n       (D O)"
+        "\n        \\_/"
+    );
     
-    addSign('e', "Fingers bent touching thumb",
-        "\n    ___\n   |___|\n   |___\n   ");
+    addSign('E', "Fingers bent touching thumb", 
+        "\n       _____"
+        "\n      |_____|"
+        "\n      |  E  |"
+        "\n      |_____|"
+        "\n       \\___|"
+    );
     
-    addSign('f', "Index and thumb make circle, other fingers up",
-        "\n    _\n   | |\n   |_\n   |\n");
+    addSign('F', "Index + thumb circle, other fingers up", 
+        "\n       | | |"
+        "\n       | | |"
+        "\n      (O) F"
+        "\n       | "
+        "\n       |"
+    );
     
-    addSign('g', "Index finger and thumb point sideways",
-        "\n    _\n   |_| \n    _|  \n   ");
+    addSign('G', "Index + thumb sideways", 
+        "\n        ___"
+        "\n       |G  |___"
+        "\n       |_______|"
+        "\n           |"
+    );
     
-    addSign('h', "Index and middle finger sideways",
-        "\n   | \n   |__\n   |  |\n");
+    addSign('H', "Index & middle sideways", 
+        "\n        | |"
+        "\n        | |___"
+        "\n        |H____|"
+        "\n            |"
+    );
     
-    addSign('i', "Pinky finger up, others closed",
-        "\n     o\n     |\n ");
+    addSign('I', "Pinky up", 
+        "\n          |"
+        "\n          |"
+        "\n          I"
+        "\n       ___|___"
+        "\n      |_______|"
+    );
     
-    addSign('j', "Pinky up, draw J in air",
-        "\n     o\n     |\n   |_| ");
+    addSign('J', "Draw J with pinky", 
+        "\n          |"
+        "\n          J"
+        "\n         / "
+        "\n       _/___"
+        "\n      |_____|"
+    );
     
-    addSign('k', "Index up, middle out, thumb between",
-        "\n   |\n   |/ \n   |\\  \n  ");
+    addSign('K', "Index up, middle out, thumb between", 
+        "\n         |"
+        "\n         |/"
+        "\n        K\\"
+        "\n       __|__"
+        "\n      |_____|"
+    );
     
-    addSign('l', "Thumb and index make L shape",
-        "\n   |\n   |\n   |__|\n");
+    addSign('L', "Thumb and index at 90 degrees", 
+        "\n         |"
+        "\n         |"
+        "\n         L"
+        "\n         |_____"
+        "\n         |_____|"
+    );
     
-    addSign('m', "Thumb under 3 fingers",
-        "\n    _ _ \n   | | |\n  ");
+    addSign('M', "Thumb under 3 fingers", 
+        "\n       | | |"
+        "\n       | | |"
+        "\n      _|_|_|_"
+        "\n     |___M___|"
+        "\n      \\_____/"
+    );
     
-    addSign('n', "Thumb under 2 fingers",
-        "\n    _\n   | |\n ");
+    addSign('N', "Thumb under 2 fingers", 
+        "\n        | |"
+        "\n        | |"
+        "\n       _|_|_"
+        "\n      |__N__|"
+        "\n       \\___/"
+    );
     
-    addSign('o', "Fingers and thumb form O",
-        "\n    ___\n   /   \\\n   \\___/\n");
-     
-    addSign('p', "Like K but pointing down",
-        "\n    _\n   |_|  \n   | \n");
+    addSign('O', "All fingers and thumb form circle", 
+        "\n        ___"
+        "\n       /   \\"
+        "\n      |  O  |"
+        "\n       \\___/"
+        "\n        | |"
+    );
     
-    addSign('q', "Like G but pointing down",
-        "\n    _\n   |_|  \n     |/  \n");
+    addSign('P', "K pointing downward", 
+        "\n       ___"
+        "\n      |P  |"
+        "\n      |_\\ |"
+        "\n        \\|"
+        "\n         |"
+    );
     
-    addSign('r', "Index and middle crossed",
-        "\n   |/\n   |\n   ");
+    addSign('Q', "G pointing downward", 
+        "\n       ___"
+        "\n      |Q__|___"
+        "\n          \\_|"
+        "\n           \\"
+    );
     
-    addSign('s', "Fist with thumb across fingers",
-        "\n   ___\n  |___\n   ___|\n   \n");
+    addSign('R', "Index and middle crossed", 
+        "\n        |/"
+        "\n        X"
+        "\n        R"
+        "\n      __|__"
+        "\n     |_____|"
+    );
     
-    addSign('t', "Thumb between index and middle",
-        "\n   |\n   |-\n   |_|\n ");
+    addSign('S', "Fist with thumb over fingers", 
+        "\n       _____"
+        "\n      |_____|<-"
+        "\n      |  S  |"
+        "\n      |_____|"
+        "\n       \\___/"
+    );
     
-    addSign('u', "Index and middle fingers up together",
-        "\n   |  |\n   |__|\n ");
+    addSign('T', "Thumb between index and middle", 
+        "\n        |"
+        "\n        T--"
+        "\n       _|_"
+        "\n      |___|"
+        "\n       \\_/"
+    );
     
-    addSign('v', "Index and middle in V shape",
-        "\n   \\ /\n    V\n   ");
+    addSign('U', "Index and middle together, up", 
+        "\n        | |"
+        "\n        | |"
+        "\n        U U"
+        "\n       _|_|_"
+        "\n      |_____|"
+    );
     
-    addSign('w', "Index, middle, ring up in W shape",
-        "\n  |_|_|\n  ");
+    addSign('V', "Index and middle apart, up", 
+        "\n       \\   /"
+        "\n        \\ /"
+        "\n         V"
+        "\n       __|__"
+        "\n      |_____|"
+    );
     
-    addSign('x', "Index bent like hook",
-        "\n   \\/\n   /\\  ");
+    addSign('W', "Three fingers up", 
+        "\n       | | |"
+        "\n       | | |"
+        "\n       W W W"
+        "\n      _|_|_|_"
+        "\n     |_______|"
+    );
     
-    addSign('y', "Thumb and pinky out",
-        "\n  |_|  \n   _|\n");
+    addSign('X', "Index bent like hook", 
+        "\n         _/"
+        "\n        / "
+        "\n        X"
+        "\n      __|__"
+        "\n     |_____|"
+    );
     
-    addSign('z', "Draw Z in air with index",
-        "\n  ___\n    /\n   /___ \n");
+    addSign('Y', "Thumb and pinky extended", 
+        "\n      |     |"
+        "\n      |     |"
+        "\n      Y     Y"
+        "\n       \\___/"
+        "\n        |_|"
+    );
+    
+    addSign('Z', "Draw Z in air with index", 
+        "\n       _____"
+        "\n      Z    /"
+        "\n          /"
+        "\n         /"
+        "\n       /_____"
+    );
 }
 
 
@@ -100,4 +227,5 @@ void displayAllSigns() {
         temp = temp->next;
     }
 }
+
 
