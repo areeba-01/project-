@@ -1,10 +1,36 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+// Areeba Module 1 
+// Sign Node for Linked List
+struct SignNode {
+    char letter;
+    string description;
+    string asciiArt;
+    SignNode* next;
+};
+
+// Stack Node for Navigation
+struct StackNode {
+    SignNode* signData;
+    StackNode* next;
+};
+
+// Queue Node for Quiz
+struct QueueNode {
+    SignNode* signData;
+    QueueNode* next;
+};
+
+// Global variables
+SignNode* head = NULL;
+StackNode* stackTop = NULL;
+QueueNode* queueFront = NULL;
+QueueNode* queueRear = NULL;
+
 //Wania Module 2
-// -------------------------
 // Add sign to Linked List
-// -------------------------
 void addSign(char letter, string desc, string art) {
     SignNode* newNode = new SignNode;
     newNode->letter = letter;
@@ -20,9 +46,7 @@ void addSign(char letter, string desc, string art) {
     }
 }
 
-// -------------------------
 // Search in Linked List
-// -------------------------
 SignNode* searchSign(char letter) {
     SignNode* temp = head;
     while (temp != NULL) {
@@ -33,9 +57,7 @@ SignNode* searchSign(char letter) {
     return NULL;
 }
 
-// -------------------------
 // Stack - Push
-// -------------------------
 void push(SignNode* signData) {
     StackNode* newNode = new StackNode;
     newNode->signData = signData;
@@ -43,9 +65,7 @@ void push(SignNode* signData) {
     stackTop = newNode;
 }
 
-// -------------------------
 // Stack - Pop
-// -------------------------
 SignNode* pop() {
     if (stackTop == NULL) return NULL;
     StackNode* temp = stackTop;
@@ -55,9 +75,7 @@ SignNode* pop() {
     return data;
 }
 
-// -------------------------
 // Queue - Enqueue
-// -------------------------
 void enqueue(SignNode* signData) {
     QueueNode* newNode = new QueueNode;
     newNode->signData = signData;
@@ -70,9 +88,7 @@ void enqueue(SignNode* signData) {
     }
 }
 
-// -------------------------
 // Queue - Dequeue
-// -------------------------
 SignNode* dequeue() {
     if (queueFront == NULL) return NULL;
 
@@ -86,40 +102,103 @@ SignNode* dequeue() {
     return data;
 }
 
-// -------------------------
-// Count signs
-// -------------------------
-int countSigns() {
-    int count = 0;
+
+// Areeba Module 2
+// Initialize all A–Z signs
+void initializeSigns() {
+    addSign('a', "Closed fist with thumb on side", 
+        "\n    __\n   |__|_\n");
+    
+    addSign('b', "Flat hand, fingers up, thumb across palm",
+        "\n   |\n   |_\n   |_|\n   ");
+    
+    addSign('c', "Curved hand like letter C",
+        "\n    ___\n   /   \n   \\___\n");
+    
+    addSign('d', "Index finger up, other fingers touch thumb",
+        "\n     |\n    _|\n   |_|\n    ");
+    
+    addSign('e', "Fingers bent touching thumb",
+        "\n    ___\n   |___|\n   |___\n   ");
+    
+    addSign('f', "Index and thumb make circle, other fingers up",
+        "\n    _\n   | |\n   |_\n   |\n");
+    
+    addSign('g', "Index finger and thumb point sideways",
+        "\n    _\n   |_| \n    _|  \n   ");
+    
+    addSign('h', "Index and middle finger sideways",
+        "\n   | \n   |__\n   |  |\n");
+    
+    addSign('i', "Pinky finger up, others closed",
+        "\n     o\n     |\n ");
+    
+    addSign('j', "Pinky up, draw J in air",
+        "\n     o\n     |\n   |_| ");
+    
+    addSign('k', "Index up, middle out, thumb between",
+        "\n   |\n   |/ \n   |\\  \n  ");
+    
+    addSign('l', "Thumb and index make L shape",
+        "\n   |\n   |\n   |__|\n");
+    
+    addSign('m', "Thumb under 3 fingers",
+        "\n    _ _ \n   | | |\n  ");
+    
+    addSign('n', "Thumb under 2 fingers",
+        "\n    _\n   | |\n ");
+    
+    addSign('o', "Fingers and thumb form O",
+        "\n    ___\n   /   \\\n   \\___/\n");
+     
+    addSign('p', "Like K but pointing down",
+        "\n    _\n   |_|  \n   | \n");
+    
+    addSign('q', "Like G but pointing down",
+        "\n    _\n   |_|  \n     |/  \n");
+    
+    addSign('r', "Index and middle crossed",
+        "\n   |/\n   |\n   ");
+    
+    addSign('s', "Fist with thumb across fingers",
+        "\n   ___\n  |___\n   ___|\n   \n");
+    
+    addSign('t', "Thumb between index and middle",
+        "\n   |\n   |-\n   |_|\n ");
+    
+    addSign('u', "Index and middle fingers up together",
+        "\n   |  |\n   |__|\n ");
+    
+    addSign('v', "Index and middle in V shape",
+        "\n   \\ /\n    V\n   ");
+    
+    addSign('w', "Index, middle, ring up in W shape",
+        "\n  |_|_|\n  ");
+    
+    addSign('x', "Index bent like hook",
+        "\n   \\/\n   /\\  ");
+    
+    addSign('y', "Thumb and pinky out",
+        "\n  |_|  \n   _|\n");
+    
+    addSign('z', "Draw Z in air with index",
+        "\n  ___\n    /\n   /___ \n");
+}
+
+
+// Display entire dataset
+void displayAllSigns() {
     SignNode* temp = head;
+    int count = 1;
 
     while (temp != NULL) {
-        count++;
+        cout << "\n" << count++ << ". Letter: " << temp->letter;
+        cout << "\nDescription: " << temp->description;
+        cout << temp->asciiArt << endl;
         temp = temp->next;
     }
-    return count;
 }
 
-// -------------------------
-// Get sign at index
-// -------------------------
-SignNode* getSignAt(int index) {
-    int c = 0;
-    SignNode* temp = head;
-
-    while (temp != NULL && c < index) {
-        temp = temp->next;
-        c++;
-    }
-    return temp;
-}
-
-// Simple random generator
-int simpleRandom(int max) {
-    static int seed = 12345;
-    seed = (seed * 1103515245 + 12345) % 2147483647;
-    return seed % max;
-}
 
 
 //Wania Module 4
@@ -190,6 +269,7 @@ void learningMode() {
     }
 }
 
+//Areeba Module 5
 // Count signs
 int countSigns() {
     int count = 0;
@@ -219,6 +299,74 @@ int simpleRandom(int max) {
     return seed % max;
 }
 
+void quizMode() {
+    cout << "\n===== QUIZ MODE =====\n";
+cout << "How many questions? ";
+int numQuestions;
+cin >> numQuestions;
+
+int totalSigns = countSigns();
+if (numQuestions > totalSigns) {
+    numQuestions = totalSigns;
+}
+
+// Track used LETTERS instead of sign indices
+bool usedLetters[26] = {false};
+
+// Add random unique signs to queue (ensuring unique letters)
+for (int i = 0; i < numQuestions; i++) {
+    int randomIndex;
+    SignNode* randomSign;
+    
+    // Keep generating random until we find a sign with an unused letter
+    do {
+        randomIndex = simpleRandom(totalSigns);
+        randomSign = getSignAt(randomIndex);
+    } while (usedLetters[randomSign->letter - 'a']); // Check if letter already used
+    
+    usedLetters[randomSign->letter - 'a'] = true; // Mark letter as used
+    enqueue(randomSign);
+}
+
+int score = 0;
+int questionNum = 1;
+
+while (queueFront != NULL) {
+    SignNode* currentSign = dequeue();
+    
+    cout << "\n\n--- Question " << questionNum << " ---\n";
+    cout << "What letter is this?\n";
+    cout << "\nGesture: " << currentSign->description << endl;
+    cout << currentSign->asciiArt << endl;
+    
+    cout << "\nYour answer: ";
+    char answer;
+    cin >> answer;
+    
+    // convert capital into small
+    answer = tolower(answer);
+    
+    if (answer == currentSign->letter){
+        cout << "Correct!\n";
+        score++;
+    } else {
+        cout << "Wrong! Correct answer: " << currentSign->letter << endl;
+    }
+    
+    questionNum++;
+}
+
+cout << "\n\n===== QUIZ RESULTS =====\n";
+cout << "Score: " << score << "/" << numQuestions << endl;
+
+if (score == numQuestions) {
+    cout << "Perfect score! Excellent!\n";
+} else if (score >= numQuestions / 2) {
+    cout << "Good job!\n";
+} else {
+    cout << "Keep practicing!\n";
+}
+}
 
 //Wania Module 6
 // Main function
