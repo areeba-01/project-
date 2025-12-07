@@ -249,7 +249,7 @@ void learningMode() {
 	            char letter;
 				cin >> letter;
 
-			// convert capital into small
+			// convert small into capital
 			letter = toupper(letter);
 			SignNode* found = searchSign(letter);
 
