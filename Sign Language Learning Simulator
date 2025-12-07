@@ -1,0 +1,258 @@
+#include <iostream>
+using namespace std;
+
+//Wania Module 2
+// -------------------------
+// Add sign to Linked List
+// -------------------------
+void addSign(char letter, string desc, string art) {
+    SignNode* newNode = new SignNode;
+    newNode->letter = letter;
+    newNode->description = desc;
+    newNode->asciiArt = art;
+    newNode->next = NULL;
+
+    if (head == NULL) head = newNode;
+    else {
+        SignNode* temp = head;
+        while (temp->next != NULL) temp = temp->next;
+        temp->next = newNode;
+    }
+}
+
+// -------------------------
+// Search in Linked List
+// -------------------------
+SignNode* searchSign(char letter) {
+    SignNode* temp = head;
+    while (temp != NULL) {
+        if (temp->letter == letter)
+            return temp;
+        temp = temp->next;
+    }
+    return NULL;
+}
+
+// -------------------------
+// Stack - Push
+// -------------------------
+void push(SignNode* signData) {
+    StackNode* newNode = new StackNode;
+    newNode->signData = signData;
+    newNode->next = stackTop;
+    stackTop = newNode;
+}
+
+// -------------------------
+// Stack - Pop
+// -------------------------
+SignNode* pop() {
+    if (stackTop == NULL) return NULL;
+    StackNode* temp = stackTop;
+    SignNode* data = temp->signData;
+    stackTop = stackTop->next;
+    delete temp;
+    return data;
+}
+
+// -------------------------
+// Queue - Enqueue
+// -------------------------
+void enqueue(SignNode* signData) {
+    QueueNode* newNode = new QueueNode;
+    newNode->signData = signData;
+    newNode->next = NULL;
+
+    if (queueRear == NULL) queueFront = queueRear = newNode;
+    else {
+        queueRear->next = newNode;
+        queueRear = newNode;
+    }
+}
+
+// -------------------------
+// Queue - Dequeue
+// -------------------------
+SignNode* dequeue() {
+    if (queueFront == NULL) return NULL;
+
+    QueueNode* temp = queueFront;
+    SignNode* data = temp->signData;
+
+    queueFront = queueFront->next;
+    if (!queueFront) queueRear = NULL;
+
+    delete temp;
+    return data;
+}
+
+// -------------------------
+// Count signs
+// -------------------------
+int countSigns() {
+    int count = 0;
+    SignNode* temp = head;
+
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+// -------------------------
+// Get sign at index
+// -------------------------
+SignNode* getSignAt(int index) {
+    int c = 0;
+    SignNode* temp = head;
+
+    while (temp != NULL && c < index) {
+        temp = temp->next;
+        c++;
+    }
+    return temp;
+}
+
+// Simple random generator
+int simpleRandom(int max) {
+    static int seed = 12345;
+    seed = (seed * 1103515245 + 12345) % 2147483647;
+    return seed % max;
+}
+
+
+//Wania Module 4
+
+// Learning mode
+void learningMode() {
+    SignNode* current = head;
+    
+    while (true) {
+        cout << "\n\n===== LEARNING MODE =====\n";
+        
+        if (current == NULL) {
+            cout << "No more signs!\n";
+            break;
+        }
+        
+        cout << "\nLetter: " << current->letter << endl;
+        cout << "Description: " << current->description << endl;
+        cout << current->asciiArt << endl;
+        
+        cout << "\n1. Next\n";
+        cout << "2. Back\n";
+        cout << "3. Search\n";
+        cout << "4. Main Menu\n";
+        cout << "Enter choice: ";
+        
+        int choice;
+        cin >> choice;
+        
+        if (choice == 1) {
+            push(current);
+            if (current->next != NULL) {
+                current = current->next;
+            } else {
+                cout << "\nThis is the last sign!\n";
+            }
+        }
+        else if (choice == 2) {
+            SignNode* prev = pop();
+            if (prev != NULL) {
+                current = prev;
+            } else {
+                cout << "\nNo previous sign!\n";
+            }
+        }
+        else if (choice == 3) {
+            cout << "Enter letter: ";
+	            char letter;
+				cin >> letter;
+
+			// convert capital into small
+			letter = tolower(letter);
+			SignNode* found = searchSign(letter);
+
+            if (found != NULL) {
+                push(current);
+                current = found;
+            } else {
+                cout << "Sign not found!\n";
+            }
+        }
+        else if (choice == 4) {
+            return;
+        }
+        else {
+            cout << "Invalid choice!\n";
+        }
+    }
+}
+
+// Count signs
+int countSigns() {
+    int count = 0;
+    SignNode* temp = head;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+// Get sign at index
+SignNode* getSignAt(int index) {
+    SignNode* temp = head;
+    int count = 0;
+    while (temp != NULL && count < index) {
+        temp = temp->next;
+        count++;
+    }
+    return temp;
+}
+
+// Simple random function
+int simpleRandom(int max) {
+    static int seed = 12345;
+    seed = (seed * 1103515245 + 12345) % 2147483647;
+    return seed % max;
+}
+
+
+//Wania Module 6
+// Main function
+int main() {
+    initializeSigns();
+    
+    while (true) {
+        cout << "\n\n***** SIGN LANGUAGE LEARNING SIMULATOR *****\n";
+        cout << "\n1. Learning Mode\n";
+        cout << "2. Quiz Mode\n";
+        cout << "3. View All Signs\n";
+        cout << "4. Exit\n";
+        cout << "\nEnter your choice: ";
+        
+        int choice;
+        cin >> choice;
+        
+        if (choice == 1) {
+            learningMode();
+        }
+        else if (choice == 2) {
+            quizMode();
+        }
+        else if (choice == 3) {
+            displayAllSigns();
+        }
+        else if (choice == 4) {
+            cout << "\nThank you for learning sign language!\n";
+            break;
+        }
+        else {
+            cout << "Invalid choice! Try again.\n";
+        }
+    }
+    
+    return 0;
+}
